@@ -45,80 +45,48 @@
 
   <!-- LOGO -->
   <div class="nav-logo">
-    <img src="assets/img29.png" alt="">
+    <img src="assets/img29.png">
   </div>
 
   <!-- LINKS -->
   <div class="nav-links" id="navMenu">
-    <a class="nav-link active">Home</a>
+    <a class="nav-link">Home</a>
     <a class="nav-link">About</a>
     <a class="nav-link">Services</a>
     <a class="nav-link">Causes</a>
     <a class="nav-link">Contact</a>
-
-    <span class="nav-indicator"></span>
   </div>
 
   <!-- BUTTON -->
   <a href="#" class="nav-btn">Donate Now</a>
 
-  <!-- TOGGLE -->
+  <!-- TOGGLE (☰ / ✖) -->
   <div class="nav-toggle" id="menuToggle">☰</div>
 
 </div>
 
-
-
-
-
 <script>
-const links = document.querySelectorAll(".nav-link");
-const indicator = document.querySelector(".nav-indicator");
 const toggle = document.getElementById("menuToggle");
 const menu = document.getElementById("navMenu");
-
-/* MOVE INDICATOR */
-function moveIndicator(el){
-  if(window.innerWidth <= 900){
-    indicator.style.width = "0px";
-    return;
-  }
-
-  indicator.style.width = el.offsetWidth + "px";
-  indicator.style.left = el.offsetLeft + "px";
-}
-
-/* DEFAULT ACTIVE */
-window.onload = () => {
-  const activeLink = document.querySelector(".nav-link.active");
-  moveIndicator(activeLink);
-};
-
-/* CLICK EVENTS */
-links.forEach(link => {
-  link.addEventListener("click", function(){
-
-    links.forEach(l => l.classList.remove("active"));
-    this.classList.add("active");
-
-    moveIndicator(this);
-
-    /* CLOSE MOBILE MENU */
-    if(window.innerWidth <= 900){
-      menu.classList.remove("active");
-    }
-  });
-});
 
 /* TOGGLE MENU */
 toggle.onclick = () => {
   menu.classList.toggle("active");
+
+  // 🔥 CHANGE ICON
+  if(menu.classList.contains("active")){
+    toggle.textContent = "✖";
+  } else {
+    toggle.textContent = "☰";
+  }
 };
 
-/* FIX ON RESIZE */
-window.addEventListener("resize", () => {
-  const active = document.querySelector(".nav-link.active");
-  moveIndicator(active);
+/* CLOSE ON LINK CLICK */
+document.querySelectorAll(".nav-link").forEach(link=>{
+  link.onclick = () => {
+    menu.classList.remove("active");
+    toggle.textContent = "☰";
+  };
 });
 </script>
 
