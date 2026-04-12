@@ -126,7 +126,30 @@ body {
 }
 
 
+/* HIDE BY DEFAULT */
+.nav-mobile-title{
+  display:none;
+}
 
+/* MOBILE VIEW */
+@media(max-width:768px){
+
+  .nav-wrap{
+    position:relative;
+  }
+
+  .nav-mobile-title{
+    display:block;
+    color: white;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    font-weight:700;
+    font-size:25px;
+    letter-spacing:2px;
+  }
+
+}
 
 
 
